@@ -1,0 +1,44 @@
+
+# Generate Rails Project
+$ rails sample_chasmanapp
+$ cd sample_chasmanapp
+
+# Add Local Git Repository
+$ git init
+$ touch .gitignore
+$ edit .gitignore
+$ git add .
+$ git commit -am "Initial commit"
+
+# Add to Remote GitHub and Heroku Repositories
+$ git remote add origin git@github.com:ChasManRors/{sample_chasmanapp}.git
+$ heroku create {sample_chasmanapp}
+
+# Push repository up to GitHub and Heroku
+$ git push
+$ git push origin master
+$ git push heroku master
+
+# Basic RSpec generation
+$ script/generate rspec
+$ script/generate rspec_controller Pages home contact
+$ rm -rf test/ spec/views/ spec/helpers/pages_helper_spec.rb
+$ spec spec/
+$ gnome-terminal -e autospec
+
+# Basic Rails Scaffold Generation
+$ script/generate nifty_layout
+$ script/generate nifty_scaffold survey name:string
+$ script/generate model question survey_id:integer content:text
+$ script/generate model answer question_id:integer content:string
+$ rake db:migrate
+
+# Prep to add new feature
+$ git checkout -b myfeature
+
+# Merge and checkin
+$ git checkout master
+$ git merge myfeature
+$ git branch -d myfeature
+
+
